@@ -58,3 +58,21 @@ function getEventWeekday(daysFromToday) {
 console.log(getEventWeekday(9)); // Logs out the weekday 9 days from today
 console.log(getEventWeekday(2)); // Logs out the weekday 2 days from today
 
+
+
+//Weather wear
+;
+function youCreateThisFunctionName(temperature){
+   if(temperature <= 0){
+    return "Sweater and hat and warm jacket";
+   }else if(temperature >0 && temperature <= 15){
+    return "Sweater and jacket"
+   }else if(temperature >15 && temperature <= 20){
+    return "T-shirt and jacket"
+   } else if(temperature >20 && temperature <=25){
+    return  "T-shirt and pants"
+   }else{return "T-shirts and shorts"}
+
+}
+  const clothesToWear = youCreateThisFunctionName(15);
+console.log(clothesToWear);

@@ -76,3 +76,47 @@ function youCreateThisFunctionName(temperature){
 }
   const clothesToWear = youCreateThisFunctionName(15);
 console.log(clothesToWear);
+
+
+
+//Student manager
+let class07Students = [];
+
+function addStudentToClass(studentName) {
+    if (studentName === "") {
+        console.log("Cannot add an empty string as a student name.");
+        return;
+    }
+
+    if (class07Students.includes(studentName)) {
+        console.log(`Student ${studentName} is already in the class`);
+        return;
+    }
+
+    if (class07Students.length >= 6 && studentName !== "Queen") {
+        console.log("Cannot add more students to class 07");
+        return;
+    }
+
+    class07Students.push(studentName);
+    console.log(class07Students);
+}
+
+function getNumberOfStudents() {
+  return class07Students.length;
+}
+
+// Example usage:
+addStudentToClass("Benjamin"); // Adds Benjamin to the class
+addStudentToClass("Alice");    // Adds Alice to the class
+addStudentToClass("");         // Logs: Cannot add an empty string as a student name.
+addStudentToClass("Alice");    // Logs: Student Alice is already in the class
+addStudentToClass("John");
+addStudentToClass("Jane");
+addStudentToClass("Mariya");
+addStudentToClass("Jerry");    // Logs: Cannot add more students to class 07
+addStudentToClass("Queen");    // Always adds Queen even if the class is full
+
+
+ console.log(getNumberOfStudents());
+  

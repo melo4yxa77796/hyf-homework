@@ -38,3 +38,23 @@ console.log(fullname6); // returns "Lady Emma Smith"
 console.log(fullname3); // returns "Lord Chris Evans"
 console.log(fullname4); // returns "Lady Alice Johnson"
 //Event application
+
+function getEventWeekday(daysFromToday) {
+  // Array of weekdays
+  const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  // Get today's date and weekday
+  const today = new Date();
+  const todayWeekday = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+
+  // Calculate the future weekday
+  const eventWeekday = (todayWeekday + daysFromToday) % 7;
+
+  // Return the name of the weekday
+  return weekdays[eventWeekday];
+}
+
+// Example usage:
+console.log(getEventWeekday(9)); // Logs out the weekday 9 days from today
+console.log(getEventWeekday(2)); // Logs out the weekday 2 days from today
+

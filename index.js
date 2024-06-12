@@ -15,6 +15,7 @@ console.log(fullname2); // returns "Emma Smith"
 //Second 
 function getFullname(firstname, surname, useFormalName = false, gender = "female") {
   let title = "";
+  let fullname = "";
 
   if (useFormalName) {
       if (gender.toLowerCase() === "male") {
@@ -24,7 +25,12 @@ function getFullname(firstname, surname, useFormalName = false, gender = "female
       }
   }
 
-  return title + firstname + " " + surname;
+  fullname += title + firstname;
+  if (surname !== "") {
+    fullname += " " + surname;
+}
+
+return fullname;
 }
 
 // Example usage:

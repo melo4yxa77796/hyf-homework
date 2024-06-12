@@ -123,10 +123,27 @@ addStudentToClass("Queen");    // Always adds Queen even if the class is full
 //Candy helper optional
 
 let boughtCandyPrices=[]
+function pricePerGramOfCandy(candyType) {
+  switch (candyType) {
+      case "sweet":
+          return 0.5;
+      case "chocolate":
+          return 0.7;
+      case "toffee":
+          return 1.1;
+      case "chewing-gum":
+          return 0.03;
+      default:
+          console.log("Unknown candy type");
+          return 0; // Return 0 for unknown candy types to avoid incorrect calculations
+  }
+}
+
 
 function addCandy(candyType,weight){
-boughtCandyPrices.push(candyType,weight)
-}
+  let pricePerGram = pricePerGramOfCandy(candyType);
+  boughtCandyPrices.push(pricePerGram * weight)
+ }
 addCandy("sweet",20);
 console.log(boughtCandyPrices);
 
@@ -135,15 +152,15 @@ function canBuyMoreCandy(){
   let totalSpent = 0;
 
   for (let i = 0; i < boughtCandyPrices.length; i++) {
-      totalSpent += boughtCandyPrices[i];
+      //totalSpent += boughtCandyPrices[i];
   }
 
   if (totalSpent < amountToSpend) {
-      console.log("You can buy more, so please do!");
-      return true;
+      //console.log("You can buy more, so please do!");
+      //return true;
   } else {
-      console.log("Enough candy for you!");
-      return false;
+      //console.log("Enough candy for you!");
+      //return false;
   }
 }
 
@@ -154,4 +171,4 @@ addCandy("toffee", 10); // Adds the price of 10 grams of toffee to the array
 addCandy("chewing-gum", 50); // Adds the price of 50 grams of chewing-gum to the array
 
 // Check if more candy can be bought
-canBuyMoreCandy(); 
+canBuyMoreCandy();

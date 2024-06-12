@@ -62,7 +62,7 @@ console.log(getEventWeekday(2)); // Logs out the weekday 2 days from today
 
 //Weather wear
 ;
-function youCreateThisFunctionName(temperature){
+function clothingAdvice(temperature){
    if(temperature <= 0){
     return "Sweater and hat and warm jacket";
    }else if(temperature >0 && temperature <= 15){
@@ -74,7 +74,7 @@ function youCreateThisFunctionName(temperature){
    }else{return "T-shirts and shorts"}
 
 }
-  const clothesToWear = youCreateThisFunctionName(15);
+  const clothesToWear = clothingAdvice(15);
 console.log(clothesToWear);
 
 

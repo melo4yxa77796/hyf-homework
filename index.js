@@ -86,3 +86,41 @@ function logOutSeriesText() {
 }
 
 logOutSeriesText();
+
+//Save a note
+const notes = [];
+
+function saveNote(content, id) {
+  notes.push({ content, id });
+}
+
+function getNote(id) {
+  if (typeof id !== 'number') {
+    console.error('Error: ID must be a number.');
+    return;
+  }
+
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].id === id) {
+      return notes[i];
+    }
+  }
+
+  console.error('Note not found.');
+  return;
+}
+
+function logOutNotesFormatted() {
+  for (let i = 0; i < notes.length; i++) {
+    console.log(`The note with id: ${notes[i].id}, has the following note text: "${notes[i].content}".`);
+  }
+}
+
+// Test the functions
+saveNote("Pick up groceries", 1);
+saveNote("Do laundry", 2);
+
+logOutNotesFormatted(); 
+// Should log:
+// The note with id: 1, has the following note text: "Pick up groceries".
+// The note with id: 2, has the following note text: "Do laundry".

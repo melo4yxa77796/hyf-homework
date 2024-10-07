@@ -58,10 +58,11 @@ contactsAPIRouter.get("/", async (req, res) => {
     res.json({ data });
   } catch (e) {
     console.error("Database query error:", e);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500);
   }
 });
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+

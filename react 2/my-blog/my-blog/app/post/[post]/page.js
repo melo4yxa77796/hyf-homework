@@ -1,9 +1,9 @@
-export default function Post({params}) {
-    console.log(params.post);
-    let title = params.post.split("-");
-    title =title.join (" ").toUpperCase();
-    return (
-      <h1>{title}</h1>
-    );
-  }
-  
+export default async function Post({ params }) {
+  const data = await params;
+  console.log(data);
+  const title = data.post.split("=");
+
+
+  return <h1>{title}</h1>;
+
+}

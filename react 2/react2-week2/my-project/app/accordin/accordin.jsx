@@ -1,40 +1,58 @@
 "use client";
-import { useState } from "react";
+
+import { useContext, useState, createContext } from "react";
 import clsx from "clsx";
 
-function Panel({ title, children, onOpen, isOpen, activeIndex }) {
-    const toggle = () => onOpen(activeIndex);
+const AccordionContext = createContext();
 
-    return (
-        <div className={'p-2 border-t border-t-black flex flex-col justify-center items-center'}>
-            <h2 className={'text-xl font-bold'}>{title}</h2>
-            <div className={clsx({
-                hidden: !isOpen,
-            })}>{children}</div>
-            {!isOpen && <button
-                className={'border border-blue-500 rounded text-blue-500'}
-                onClick={() => toggle()}
-            >Show more</button>}
-        </div>
-    )
-};
+function AccordionProvider({ children }) {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <AccordionContext.Provider value={{ activeIndex, setActiveIndex }}>
+      {children}
+    </AccordionContext.Provider>
+  );
+}
+
+function Panel({ title, children, panelIndex }) {
+  const { activeIndex } = useContext(AccordionContext);
+
+  const isOpen = activeIndex === panelIndex;
+
+  return (
+    <div className="p-2 border-t border-t-black flex flex-col justify-center items-center">
+      <h2 className="text-xl font-bold">{title}</h2>
+      <div
+        className={clsx({
+          hidden: !isOpen,
+        })}
+      >
+        {children}
+      </div>
+      {!isOpen && (
+        <button className="border border-blue-500 rounded text-blue-500">
+          Show more
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default function Accordion() {
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    const onOpen = (index) => {
-        setActiveIndex(index)
-    };
-
-    return <div className={'flex flex-col border border-black rounded'}>
-        <Panel title={'Section 1'} onOpen={onOpen} activeIndex={1} isOpen={activeIndex === 1}>
-            Content 1
+  return (
+    <AccordionProvider>
+      <div className="flex flex-col border border-black rounded">
+        <Panel title="Section 1" panelIndex={1}>
+          Content 1
         </Panel>
-        <Panel title={'Section 2'} onOpen={onOpen} activeIndex={2} isOpen={activeIndex === 2}>
-            Content 2
+        <Panel title="Section 2" panelIndex={2}>
+          Content 2
         </Panel>
-        <Panel title={'Section 3'} onOpen={onOpen} activeIndex={3} isOpen={activeIndex === 3}>
-            Content 2
+        <Panel title="Section 3" panelIndex={3}>
+          Content 3
         </Panel>
-    </div>
+      </div>
+    </AccordionProvider>
+  );
 }

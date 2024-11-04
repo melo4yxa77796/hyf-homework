@@ -8,7 +8,7 @@ export function messengerReducer(state, action) {
         case 'changed_selection': {
             return {
                 ...state,
-                selectedId: action.contactId,
+                selectedId: action.selectedId,
                 message: '',
             };
         }

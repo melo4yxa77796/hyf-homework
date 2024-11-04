@@ -5,6 +5,12 @@ import Chat from './Chat';
 import ContactList from './ContactList';
 import { initialState, messengerReducer } from './messengerReducer';
 
+const contacts = [
+    {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
+    {id: 1, name: 'Alice', email: 'alice@mail.com'},
+    {id: 2, name: 'Bob', email: 'bob@mail.com'},
+];
+
 export default function Messenger() {
     const [state, dispatch] = useReducer(messengerReducer, initialState);
 
@@ -28,8 +34,5 @@ export default function Messenger() {
     );
 }
 
-const contacts = [
-    {id: 0, name: 'Taylor', email: 'taylor@mail.com'},
-    {id: 1, name: 'Alice', email: 'alice@mail.com'},
-    {id: 2, name: 'Bob', email: 'bob@mail.com'},
-];
+
+

@@ -8,15 +8,19 @@ const AccordionContext = createContext();
 function AccordionProvider({ children }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const onChange = (index) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
+  };
+
   return (
-    <AccordionContext.Provider value={{ activeIndex, setActiveIndex }}>
+    <AccordionContext.Provider value={{ activeIndex, onChange }}>
       {children}
     </AccordionContext.Provider>
   );
 }
 
 function Panel({ title, children, panelIndex }) {
-  const { activeIndex } = useContext(AccordionContext);
+  const { activeIndex, onChange } = useContext(AccordionContext);
 
   const isOpen = activeIndex === panelIndex;
 
@@ -31,7 +35,10 @@ function Panel({ title, children, panelIndex }) {
         {children}
       </div>
       {!isOpen && (
-        <button className="border border-blue-500 rounded text-blue-500">
+        <button
+          className="border border-blue-500 rounded text-blue-500"
+          onClick={() => onChange(panelIndex)}
+        >
           Show more
         </button>
       )}

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useCounter } from '../context/CounterContext';
+import { useCounter } from './CounterContext';
 
 const Counter = () => {
     const { state, dispatch } = useCounter();

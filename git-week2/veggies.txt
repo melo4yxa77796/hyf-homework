@@ -1,5 +1,10 @@
 tomato
 potato
+carrot
+pepper
+eggplant
+onion
+garlic
 pumpkin
 pepper
 eggplant
